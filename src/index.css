@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .illusion-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, #ff00ff, #00ffff, #ffff00, #ff00ff);
+    background-size: 400% 400%;
+    animation: gradient-illusion 15s ease infinite, subtle-zoom 25s ease-in-out infinite alternate;
+    opacity: 0.6; /* Adjust opacity as needed */
+    filter: blur(10px); /* Add blur for a softer effect */
+  }
+
+  @keyframes gradient-illusion {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes subtle-zoom {
+     0% { transform: scale(1); }
+     100% { transform: scale(1.1); }
+  }
+
+  /* Styles for the interactive dots */
+  .interactive-illusion-container {
+    /* Optional: Add a subtle background or border to the container */
+    /* background-color: rgba(255, 255, 255, 0.05); */
+    /* border-radius: 10px; */
+  }
+
+  .illusion-dot {
+    position: absolute;
+    /* Reset left/top as we are using translate now */
+    left: 0;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.8); /* White dots */
+    border-radius: 50%;
+    /* Slightly faster transition */
+    transition: transform 0.05s linear, opacity 0.05s linear, filter 0.05s linear;
+    will-change: transform, opacity, filter; /* Performance hint */
+  }
+}
